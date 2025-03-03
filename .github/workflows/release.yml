@@ -67,6 +67,10 @@ jobs:
         path: ./VERSION
         trim: true
 
+    - name: Set full version
+      run: |
+        echo "VERSION=1.${{ steps.version.outputs.content }}" >> "$GITHUB_ENV"
+
     - name: Download artifacts
       uses: actions/download-artifact@v4
       with:
@@ -80,9 +84,9 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add VERSION
-        git commit -m "Version ${{ steps.version.outputs.content }}"
-        git tag -a v${{ steps.version.outputs.content }} -m "Version ${{ steps.version.outputs.content }}"
-        git push origin v${{ steps.version.outputs.content }}
+        git commit -m "Version $VERSION"
+        git tag -a v$VERSION -m "Version $VERSION"
+        git push origin v$VERSION
         git push
 
     - name: Create Release
@@ -91,8 +95,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ steps.version.outputs.content }}
-        release_name: Release v${{ steps.version.outputs.content }}
+        tag_name: v$VERSION
+        release_name: Release v$VERSION
         draft: false
         prerelease: false
 
@@ -103,9 +107,9 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./release/app-release.apk
-        asset_name: ReButton_${{ steps.version.outputs.content }}.apk
+        asset_name: ReButton_$VERSION.apk
         asset_content_type: application/octet-stream
 
     - name: Summary
       run: |
-        echo "Release v${{ steps.version.outputs.content }} created" >> $GITHUB_STEP_SUMMARY
+        echo "Release v$VERSION created" >> $GITHUB_STEP_SUMMARY
