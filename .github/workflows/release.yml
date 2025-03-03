@@ -26,8 +26,8 @@ jobs:
 
     - uses: actions/setup-java@v4
       with:
-        distribution: 'jetbrains'
-        java-version: '21'
+        distribution: 'oracle'
+        java-version: '17'
 
     - name: Bump version file
       uses: francktrouillez/auto-bump-version-file@v1
