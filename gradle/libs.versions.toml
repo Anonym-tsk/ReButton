@@ -1,0 +1,50 @@
+[versions]
+agp = "8.8.2"
+kotlin = "2.0.0"
+playServicesWearable = "19.0.0"
+appcompat = "1.7.0"
+material = "1.12.0"
+activity = "1.10.1"
+constraintlayout = "2.2.1"
+lifecycleRuntimeKtx = "2.8.7"
+activityCompose = "1.10.1"
+composeBom = "2025.02.00"
+preference = "1.2.1"
+preferenceVersion = "1.1.0-alpha05"
+wear = "1.3.0"
+wearable = "2.9.0"
+wearpreferenceactivity = "0.5.0"
+
+[libraries]
+navigation-fragment = { module = "android.arch.navigation:navigation-fragment" }
+navigation-runtime = { module = "androidx.navigation:navigation-runtime" }
+navigation-ui = { module = "android.arch.navigation:navigation-ui" }
+play-services-wearable = { group = "com.google.android.gms", name = "play-services-wearable", version.ref = "playServicesWearable" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+preference = { module = "androidx.preference:preference", version.ref = "preference" }
+preference-v110alpha05 = { module = "androidx.preference:preference", version.ref = "preferenceVersion" }
+support-wearable = { module = "com.google.android.support:wearable", version.ref = "wearable" }
+ui = { group = "androidx.compose.ui", name = "ui" }
+ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+material3 = { group = "androidx.compose.material3", name = "material3" }
+wear = { module = "androidx.wear:wear", version.ref = "wear" }
+wearable = { module = "com.google.android.support:wearable" }
+wearpreferenceactivity = { module = "me.denley.wearpreferenceactivity:wearpreferenceactivity", version.ref = "wearpreferenceactivity" }
+x-x = { module = "androidx.wear.wear:1.0" }
+xx = { module = "androidx.navigation.safeargs:*" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+

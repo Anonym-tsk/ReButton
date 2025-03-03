@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+    <net.vasilchuk.rebutton.ui.PreferenceCategory app:title="@string/app_name">
+        <ListPreference
+            app:dialogTitle="@string/recent_apps"
+            app:entries="@array/recent_entries"
+            app:entryValues="@array/recent_values"
+            app:defaultValue="_recent"
+            app:key="recent_apps"
+            app:title="@string/recent_apps"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            app:dialogTitle="@string/voice_assistant"
+            app:entries="@array/assistant_entries"
+            app:entryValues="@array/assistant_values"
+            app:defaultValue="_assistant"
+            app:key="voice_assistant"
+            app:title="@string/voice_assistant"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            app:dialogTitle="@string/google_pay"
+            app:entries="@array/google_pay_entries"
+            app:entryValues="@array/google_pay_values"
+            app:defaultValue="_nothing"
+            app:key="google_pay"
+            app:title="@string/google_pay"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            app:dialogTitle="@string/google_assistant"
+            app:entries="@array/google_assistant_entries"
+            app:entryValues="@array/google_assistant_values"
+            app:defaultValue="_nothing"
+            app:key="google_assistant"
+            app:title="@string/google_assistant"
+            app:useSimpleSummaryProvider="true" />
+    </net.vasilchuk.rebutton.ui.PreferenceCategory>
+</PreferenceScreen>

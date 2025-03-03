@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ReButton</string>
+    <string name="title_activity_recent_apps">ReButton</string>
+    <string name="recent_apps">Recent apps</string>
+    <string name="voice_assistant">Voice Assistant</string>
+    <string name="google_pay">Google Pay</string>
+    <string name="google_assistant">Google Assistant</string>
+    <string name="accessibility_service_description">The service is required to handle opening of Google Assistant and Google Pay</string>
+    <string name="need_accessibility_service">Please enable ReButton accessibility service</string>
+</resources>

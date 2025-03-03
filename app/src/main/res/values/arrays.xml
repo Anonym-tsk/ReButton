@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="recent_entries">
+        <item>Default</item>
+        <item>Home</item>
+    </string-array>
+    <string-array name="recent_values">
+        <item>_recent</item>
+        <item>_home</item>
+    </string-array>
+
+    <string-array name="assistant_entries">
+        <item>Default</item>
+        <item>Recent Apps</item>
+        <item>Home</item>
+    </string-array>
+    <string-array name="assistant_values">
+        <item>_assistant</item>
+        <item>_recent</item>
+        <item>_home</item>
+    </string-array>
+
+    <string-array name="google_pay_entries">
+        <item>Default</item>
+        <item>Recent Apps</item>
+        <item>Home</item>
+    </string-array>
+    <string-array name="google_pay_values">
+        <item>_nothing</item>
+        <item>_recent</item>
+        <item>_home</item>
+    </string-array>
+
+    <string-array name="google_assistant_entries">
+        <item>Default</item>
+        <item>Recent Apps</item>
+        <item>Home</item>
+    </string-array>
+    <string-array name="google_assistant_values">
+        <item>_nothing</item>
+        <item>_recent</item>
+        <item>_home</item>
+    </string-array>
+</resources>
