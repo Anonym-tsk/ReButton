@@ -26,6 +26,7 @@ jobs:
 
     - uses: actions/setup-java@v4
       with:
+        distribution: 'jetbrains'
         java-version: '21'
 
     - name: Bump version file
