@@ -9,3 +9,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+lint-baseline.xml
+/app/release
+/app/build
