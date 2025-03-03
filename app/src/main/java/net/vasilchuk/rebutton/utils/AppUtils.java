@@ -43,6 +43,7 @@ public class AppUtils {
 
     public static void openAccessibilitySettings(Context context) {
         Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
@@ -52,6 +53,7 @@ public class AppUtils {
 
     public static void actionRecentApps(Context context) {
         Intent intent = new Intent(Intent.ACTION_ALL_APPS);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         intent.setPackage("com.google.android.wearable.sysui");
         context.startActivity(intent);
@@ -60,12 +62,14 @@ public class AppUtils {
     public static void actionHome(Context context) {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         context.startActivity(intent);
     }
 
     public static void actionAssistant(Context context) {
         Intent intent = new Intent("android.intent.action.VOICE_ASSIST");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         intent.setPackage("com.google.android.wearable.assistant");
         context.startActivity(intent);
