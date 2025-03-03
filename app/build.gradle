@@ -55,10 +55,10 @@ android {
 
 dependencies {
 
-    implementation libs.play.services.wearable
-    implementation libs.support.wearable
-    implementation libs.wearable
     implementation libs.wear
+    implementation libs.wearable
+    implementation libs.support.wearable
+    implementation libs.play.services.wearable
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
@@ -71,10 +71,6 @@ dependencies {
     implementation libs.ui.graphics
     implementation libs.ui.tooling.preview
     implementation libs.material3
-    compileOnly libs.play.services.wearable
-    compileOnly libs.support.wearable
-    compileOnly libs.wearable
-    compileOnly libs.wear
     androidTestImplementation platform(libs.compose.bom)
     androidTestImplementation libs.ui.test.junit4
     debugImplementation libs.ui.tooling
