@@ -1,0 +1,106 @@
+name: Build and publish release
+
+on:
+  workflow_dispatch:
+
+env:
+  KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+  RELEASE_SIGN_KEY_PASSWORD: ${{ secrets.RELEASE_SIGN_KEY_PASSWORD }}
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build_apk:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Bump version file
+      uses: francktrouillez/auto-bump-version-file@v1
+      with:
+        file: 'VERSION'
+
+    - name: Run tests and build release artifacts
+      run: |
+        ./gradlew test
+        ./gradlew assembleRelease --stacktrace
+        ./gradlew bundleRelease
+
+    - name: Upload signed APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: ReButton.apk
+        path: app/build/outputs/apk/release/app-release.apk
+        if-no-files-found: error
+
+  create-release:
+    runs-on: ubuntu-22.04
+    needs: [build-repository]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Bump version file
+      uses: francktrouillez/auto-bump-version-file@v1
+      with:
+        file: 'VERSION'
+
+    - name: Read version
+      id: version
+      uses: juliangruber/read-file-action@v1
+      with:
+        path: ./VERSION
+        trim: true
+
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: out
+
+    - name: Display artifacts
+      run: ls -R ./out
+
+    - name: Commit and push version file
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add VERSION
+        git commit -m "Version ${{ steps.version.outputs.content }}"
+        git tag -a v${{ steps.version.outputs.content }} -m "Version ${{ steps.version.outputs.content }}"
+        git push origin v${{ steps.version.outputs.content }}
+        git push
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1.1.4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ steps.version.outputs.content }}
+        release_name: Release v${{ steps.version.outputs.content }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release apk
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./out/ReButton.apk
+        asset_name: ReButton_${{ steps.version.outputs.content }}.apk
+        asset_content_type: application/octet-stream
+
+    - name: Summary
+      run: |
+        echo "Release v${{ steps.version.outputs.content }} created" >> $GITHUB_STEP_SUMMARY
