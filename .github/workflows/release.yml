@@ -76,17 +76,14 @@ jobs:
       with:
         name: release
 
-    - name: Display artifacts
-      run: ls -R
-
     - name: Commit and push version file
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add VERSION
         git commit -m "Version $VERSION"
-        git tag -a v$VERSION -m "Version $VERSION"
-        git push origin v$VERSION
+        git tag -a "v$VERSION" -m "Version $VERSION"
+        git push origin "v$VERSION"
         git push
 
     - name: Create Release
@@ -95,8 +92,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: "v$VERSION"
-        release_name: "Release v$VERSION"
+        tag_name: v${{ VERSION }}
+        release_name: Release v${{ VERSION }}
         draft: false
         prerelease: false
 
