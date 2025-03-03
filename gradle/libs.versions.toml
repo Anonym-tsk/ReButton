@@ -16,6 +16,7 @@ wearable = "2.9.0"
 wearpreferenceactivity = "0.5.0"
 
 [libraries]
+google-wearable = { module = "com.google.android.wearable:wearable" }
 navigation-fragment = { module = "android.arch.navigation:navigation-fragment" }
 navigation-runtime = { module = "androidx.navigation:navigation-runtime" }
 navigation-ui = { module = "android.arch.navigation:navigation-ui" }
