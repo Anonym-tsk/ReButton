@@ -43,7 +43,7 @@ jobs:
     - name: Upload signed APK
       uses: actions/upload-artifact@v4
       with:
-        name: ReButton.apk
+        name: release
         path: app/build/outputs/apk/release/app-release.apk
         if-no-files-found: error
 
@@ -70,10 +70,10 @@ jobs:
     - name: Download artifacts
       uses: actions/download-artifact@v4
       with:
-        path: out
+        name: release
 
     - name: Display artifacts
-      run: ls -R ./out
+      run: ls -R ./release
 
     - name: Commit and push version file
       run: |
@@ -102,7 +102,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./out/ReButton.apk
+        asset_path: ./release/app-release.apk
         asset_name: ReButton_${{ steps.version.outputs.content }}.apk
         asset_content_type: application/octet-stream
 
