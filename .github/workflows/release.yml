@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build_apk:
+  build-apk:
     runs-on: ubuntu-22.04
 
     steps:
@@ -47,7 +47,7 @@ jobs:
 
   create-release:
     runs-on: ubuntu-22.04
-    needs: [build-repository]
+    needs: [build-apk]
 
     steps:
     - name: Checkout repository
