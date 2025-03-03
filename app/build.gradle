@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+version = rootProject.file('VERSION').text.trim()
+
 android {
     namespace 'net.vasilchuk.rebutton'
     compileSdk 35
@@ -12,16 +14,16 @@ android {
         applicationId "net.vasilchuk.rebutton"
         minSdk 30
         targetSdk 35
-        versionCode 1
-        versionName "1.0"
+        versionCode version.toInteger()
+        versionName "1." + version
 
     }
 
     signingConfigs {
         release {
             storeFile file("../keys/ReButton.jks")
+            keyAlias "ReButton"
             storePassword System.getenv('KEYSTORE_PASSWORD')
-            keyAlias System.getenv('RELEASE_SIGN_KEY_ALIAS')
             keyPassword System.getenv('RELEASE_SIGN_KEY_PASSWORD')
         }
     }
