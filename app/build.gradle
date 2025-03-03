@@ -71,7 +71,10 @@ dependencies {
     implementation libs.ui.graphics
     implementation libs.ui.tooling.preview
     implementation libs.material3
-    compileOnly libs.google.wearable
+    compileOnly libs.play.services.wearable
+    compileOnly libs.support.wearable
+    compileOnly libs.wearable
+    compileOnly libs.wear
     androidTestImplementation platform(libs.compose.bom)
     androidTestImplementation libs.ui.test.junit4
     debugImplementation libs.ui.tooling
